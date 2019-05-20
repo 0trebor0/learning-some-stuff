@@ -33,7 +33,7 @@ let request = {
                             res.write(JSON.stringify({"status":"ok","msg":"account created"}));
                             res.end();
                         }
-                        //console.log( users );
+                       
                     } else {
                         res.writeHead( 200, {'Content-Type':'application/json'} );
                         res.write(JSON.stringify({"status":"error","msg":"missing values"}));
@@ -65,9 +65,7 @@ let request = {
                 //res.end(JSON.stringify({"status":"hey"}));
 
             });
-            /*res.writeHead( 200, {'Content-Type':'application/json'} );
-            res.write(JSON.stringify({"status":"hey"}));
-            res.end();*/
+ 
         }
     }
 }
@@ -94,3 +92,5 @@ try{
 }catch( error ){
     console.log( error );
 }
+
+
