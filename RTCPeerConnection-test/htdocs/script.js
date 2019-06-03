@@ -29,10 +29,10 @@ websocket.onmessage = ( event )=>{
 			onAnswer( array.answer );
 		break;
 		case "candidate":
-
+			onIcecandidate( array.candidate );
 		break
 	}
-	console.log( connectionPeer.getStats() );
+	console.log( connectionPeer.connectionState );
 }
 navigator.getUserMedia({video: true}, gotSTream, ( err )=>{
 	console.log( err );
