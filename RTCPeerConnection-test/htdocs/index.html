@@ -1,0 +1,22 @@
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<style>
+			.hidden{
+				display: none;
+			}
+		</style>
+	</head>
+	<body>
+		<center>
+			<div>
+				<p><button id="startButton" onclick="start()">Start</button><button id="stopButton" onclick="stop()" disabled>Stop</button></p>
+				<p><video id="localVideo" autoplay></video></p>
+				<p><video id="remoteVideo" autoplay></video></p>
+				<div id="errorMsg"></div>
+				<p>WebsocketHistory:<div id="WebsocketHistory"></div></p>
+			</div>
+		</center>
+		<script src="./script.js"></script>
+	</body>
+</html>

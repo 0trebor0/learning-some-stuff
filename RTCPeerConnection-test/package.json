@@ -1,0 +1,22 @@
+{
+  "name": "test1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "dependencies": {
+    "fs": "^0.0.1-security",
+    "http": "^0.0.0",
+    "mime-types": "^2.1.24",
+    "nodemon": "^1.19.1",
+    "parse-formdata": "^1.0.2",
+    "url": "^0.11.0",
+    "ws": "^7.0.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
