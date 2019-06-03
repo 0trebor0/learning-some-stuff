@@ -1,3 +1,4 @@
+
 var localVideo = document.getElementById('localVideo');
 var remoteVideo = document.getElementById('remoteVideo');
 var startButton = document.getElementById('startButton');
@@ -34,12 +35,10 @@ websocket.onmessage = ( event )=>{
 	}
 	console.log( connectionPeer );
 }
-async function start(){
+getCameraVideo();
+function start(){
 	startButton.disabled = true;
 	stopButton.disabled = false;
-	await navigator.getUserMedia({video: true}, gotSTream, ( err )=>{
-		console.log( err );
-	});
 	connectionPeer.createOffer( ( offer )=>{
 		wSend( {"type":"offer","offer":offer} );
 		connectionPeer.setLocalDescription( offer );
@@ -47,6 +46,11 @@ async function start(){
 		console.log( err );
 		document.getElementById('errorMsg').innerHTML = err;
 	} );
+}
+async function getCameraVideo(){
+	await navigator.getUserMedia({video: true}, gotSTream, ( err )=>{
+		console.log( err );
+	});
 }
 function stop(){
 	stopButton.disabled = true;
