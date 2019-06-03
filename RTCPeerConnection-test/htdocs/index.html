@@ -1,6 +1,7 @@
 <html>
 	<head>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="manifest" href="./manifest.json">
 		<style>
 			.hidden{
 				display: none;
@@ -11,8 +12,8 @@
 		<center>
 			<div>
 				<p><button id="startButton" onclick="start()">Start</button><button id="stopButton" onclick="stop()" disabled>Stop</button></p>
-				<p><video id="localVideo" autoplay></video></p>
-				<p><video id="remoteVideo" autoplay></video></p>
+				<p><video id="localVideo" controls autoplay playsinline></video></p>
+				<p><video id="remoteVideo" controls autoplay playsinline></video></p>
 				<div id="errorMsg"></div>
 				<p>WebsocketHistory:<div id="WebsocketHistory"></div></p>
 			</div>

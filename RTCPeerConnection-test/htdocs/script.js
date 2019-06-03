@@ -32,14 +32,14 @@ websocket.onmessage = ( event )=>{
 			onIcecandidate( array.candidate );
 		break
 	}
-	console.log( connectionPeer.connectionState );
+	console.log( connectionPeer );
 }
-navigator.getUserMedia({video: true}, gotSTream, ( err )=>{
-	console.log( err );
-});
-function start(){
+async function start(){
 	startButton.disabled = true;
 	stopButton.disabled = false;
+	await navigator.getUserMedia({video: true}, gotSTream, ( err )=>{
+		console.log( err );
+	});
 	connectionPeer.createOffer( ( offer )=>{
 		wSend( {"type":"offer","offer":offer} );
 		connectionPeer.setLocalDescription( offer );
@@ -63,7 +63,7 @@ function wSend( message ){
 	websocket.send( JSON.stringify( message ) );
 }
 function onOffer( offer ){
-	connectionPeer.setRemoteDescription( offer );
+	connectionPeer.setRemoteDescription( new RTCSessionDescription( offer ) );
 	connectionPeer.createAnswer( ( answer )=>{
 		connectionPeer.setLocalDescription( answer );
 		wSend( {"type":"answer","answer":answer} );
@@ -73,8 +73,8 @@ function onOffer( offer ){
 	} );
 }
 function onAnswer( answer ){
-	connectionPeer.setRemoteDescription( answer );
+	connectionPeer.setRemoteDescription( new RTCSessionDescription( answer ) );
 }
 function onIcecandidate( candidate ){
-	connectionPeer.addIceCandidate( candidate );
+	connectionPeer.addIceCandidate( new RTCIceCandidate( candidate ) );
 }
