@@ -1,0 +1,23 @@
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<!--<link rel="manifest" href="/videoLiveStream/manifest.json">-->
+		<style>
+			.hidden{
+				display: none;
+			}
+		</style>
+	</head>
+	<body>
+		<center>
+			<div>
+				<p><button id="startButton" onclick="start()">Start</button><button id="stopButton" onclick="stop()" disabled>Stop</button></p>
+				<p>Host:</br><video id="videoPlayer" controls></video></p>
+				<p>Client:</br><video id="clientPlayer" controls></video></p>
+				<div id="errorMsg"></div>
+				<div id="WebsocketHistory"></div>
+			</div>
+		</center>
+		<script src="./videoLiveStream/script.js"></script>
+	</body>
+</html>

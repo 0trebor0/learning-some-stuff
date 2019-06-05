@@ -26,8 +26,33 @@ try{
 				res.end();
 			}
 		}else if( fs.existsSync( htdocs+URL.pathname ) ){
-			res.writeHead(200, {'Content-Type': mime.lookup( htdocs+URL.pathname )});
-            fs.createReadStream( htdocs+URL.pathname ).pipe( res );
+			if( fs.existsSync( htdocs+URL.pathname+"/index.html" ) ){
+                res.writeHead(200, {'Content-Type': mime.lookup( htdocs+URL.pathname+"/index.html" )});
+                var readStream = fs.createReadStream( htdocs+URL.pathname+"/index.html" );
+                readStream.on( 'data', ( chunk )=>{
+                    res.write( chunk );
+                } );
+                readStream.on( 'end', ()=>{
+                    res.end();
+                } );
+                //fs.createReadStream( htdocs+URL.pathname+"/index.html" ).pipe( res );
+                //res.end();
+			} else if( fs.existsSync( htdocs+URL.pathname ) ){
+                res.writeHead(200, {'Content-Type': mime.lookup( htdocs+URL.pathname )});
+                var readStream = fs.createReadStream( htdocs+URL.pathname );
+                readStream.on( 'data', ( chunk )=>{
+                    res.write( chunk );
+                } );
+                readStream.on( 'end', ()=>{
+                    res.end();
+                } );
+                //fs.createReadStream( htdocs+URL.pathname+"/index.html" ).pipe( res );
+                //res.end();
+			} else {
+                res.writeHead(404, {'Content-Type': 'text/html'});
+                res.write( "<head><title>404 not found</title></head><body><center><h1>404 Not Found</h1><p>"+URL.pathname+" not found</p></center></body>" );
+                res.end();
+            }
         }else{
             res.writeHead(404, {'Content-Type': 'text/html'});
             res.write( "<head><title>404 not found</title></head><body><center><h1>404 Not Found</h1><p>"+URL.pathname+" not found</p></center></body>" );
