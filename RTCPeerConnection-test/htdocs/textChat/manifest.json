@@ -1,0 +1,9 @@
+{
+  "short_name": "RTCPeerConnection-test",
+  "name": "RTCPeerConnection-test",
+  "start_url": "/",
+  "background_color": "#3367D6",
+  "display": "standalone",
+  "theme_color": "#3367D6",
+  "permissions": {}
+}

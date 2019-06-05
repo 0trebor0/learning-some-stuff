@@ -1,0 +1,23 @@
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<!--<link rel="manifest" href="./manifest.json">-->
+		<style>
+			.hidden{
+				display: none;
+			}
+		</style>
+	</head>
+	<body>
+		<center>
+			<div>
+				<p><button id="startButton" onclick="start()">Start</button><button id="stopButton" onclick="stop()" disabled>Stop</button></p>
+				<div id="messages"></div>
+				<p><input type="text" id="messageToSend" autocomplete="off" placeholder="Type Message to Send"/><button id="msgSendButton" onclick="sendMessage()" disabled>Send</button></p>
+				<div id="errorMsg"></div>
+				<p>WebsocketHistory:<div id="WebsocketHistory"></div></p>
+			</div>
+		</center>
+		<script src="./textChat/script.js"></script>
+	</body>
+</html>
